@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose')
 
 const app = express();
 
@@ -10,6 +11,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//mongo connection
+mongoose
+    .connect(
+        `mongodb+srv://dbUser:AZZ12&&AA11@trickotrack.zc5fh2v.mongodb.net/?retryWrites=true&w=majority&appName=TrickOTrack`,
+        { useNewUrlParser: true, useUnifiedTopology: true }
+    )
+    .then(() => console.log('Connexion à MongoDB réussie !'))
+    .catch((e) => console.log(`Connexion à MongoDB échouée !`+e))
 
 
 // Données fictives pour tester
