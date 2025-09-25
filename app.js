@@ -25,10 +25,13 @@ mongoose
 app.get('/api/projets', projectCtrl.ProjectList);
 app.get('/api/projets/:id',projectCtrl.findProject);
 
+//Routes suppresion données
+app.delete('/api/projets/:id',projectCtrl.deleteProject);
+
 app.post('/api/project', (req, res) => {
   const nouveauProjet = { id: projets.length + 1, ...req.body };
   projets.push(nouveauProjet);
-  res.status(201).json(nouveauProjet);
+  res.status(201).json(nouveauProjet);      
 });
 
 // Routes envies
